@@ -1,9 +1,26 @@
+/*
+* bootstrap js order
+ '../js/libs/bootstrap/js/bootstrap-affix.js',
+  '../js/libs/bootstrap/js/bootstrap-alert.js',
+  '../js/libs/bootstrap/js/bootstrap-button.js',
+  '../js/libs/bootstrap/js/bootstrap-carousel.js',
+  '../js/libs/bootstrap/js/bootstrap-collapse.js',
+  '../js/libs/bootstrap/js/bootstrap-dropdown.js',
+  '../js/libs/bootstrap/js/bootstrap-modal.js',
+  '../js/libs/bootstrap/js/bootstrap-scrollspy.js',
+  '../js/libs/bootstrap/js/bootstrap-tab.js',
+  '../js/libs/bootstrap/js/bootstrap-tooltip.js',
+  '../js/libs/bootstrap/js/bootstrap-transition.js',
+  '../js/libs/bootstrap/js/bootstrap-typeahead.js',
+  '../js/libs/bootstrap/js/bootstrap-popover.js',
+*/
+
 /*global module:false*/
 module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    pkg: '<json:pujakka.json>',
+    pkg: '<json:project.json>',
     meta: {
       banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
         '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
@@ -13,27 +30,8 @@ module.exports = function(grunt) {
     },
     'jsmin-sourcemap': {
       prod: {
-        src: [
-          '../js/libs/detectivejs/detective.min.js', 
-          '../js/libs/loremjs/lorem.min.js',
-          '../js/libs/JSON-js/json2.js',
-          '../js/libs/Radio/radio.min.js',
-          '../js/libs/bootstrap/js/bootstrap-affix.js',
-          '../js/libs/bootstrap/js/bootstrap-alert.js',
-          '../js/libs/bootstrap/js/bootstrap-button.js',
-          '../js/libs/bootstrap/js/bootstrap-carousel.js',
-          '../js/libs/bootstrap/js/bootstrap-collapse.js',
-          '../js/libs/bootstrap/js/bootstrap-dropdown.js',
-          '../js/libs/bootstrap/js/bootstrap-modal.js',
-          '../js/libs/bootstrap/js/bootstrap-scrollspy.js',
-          '../js/libs/bootstrap/js/bootstrap-tab.js',
-          '../js/libs/bootstrap/js/bootstrap-tooltip.js',
-          '../js/libs/bootstrap/js/bootstrap-transition.js',
-          '../js/libs/bootstrap/js/bootstrap-typeahead.js',
-          '../js/libs/bootstrap/js/bootstrap-popover.js',
-          '../js/libs/JavaScript-MD5/md5.js',
-          '../js/development.js'
-        ],
+
+        src: [],
 
         // Destination for concatenated/minified JavaScript
         dest: '../js/<%= pkg.name %>.min.js',
@@ -104,6 +102,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-groundskeeper');
 
   grunt.registerTask('default', 'bump groundskeeper jsmin-sourcemap less copy');
+  grunt.registerTask('prod', 'bump:minor jsmin-sourcemap less copy');
   //grunt.registerTask('default', 'concat min less copy');
   //grunt.registerTask('prod', 'lint qunit concat:prod min groundskeeper:prod less copy bump:minor');
 
